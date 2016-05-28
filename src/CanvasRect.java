@@ -11,20 +11,17 @@ public class CanvasRect extends JPanel{
 	private Vector<Rectangle> list = new Vector<>();
 	private ArrayList<Color> listeCouleur = new ArrayList<>();
 	private int x,y,w,h;
+	Canvas c;
 	
+	CanvasRect(Canvas c){
+		this.c = c;
+	}
 	
 	
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		setBackground(Color.WHITE);
-		
-		/*for(Rectangle rec: list){
-			g.setColor(Color.ORANGE);
-			g.fillRect(rec.x, rec.y, w , h);
-			g.setColor(Color.BLACK);
-			g.drawRect(rec.x, rec.y, w,h);
-		}*/
 		
 		for(int i=0 ; i<listeCouleur.size(); i++){
 			g.setColor(listeCouleur.get(i));
@@ -49,7 +46,7 @@ public class CanvasRect extends JPanel{
 		this.w = n;
 	}
 	
-	public void mettreCouleur(Canvas c){
+	public void mettreCouleur(){		
 		for(Color c1 : c.listeCouleur ){
 			this.listeCouleur.add(c1);
 		}
@@ -73,6 +70,17 @@ public class CanvasRect extends JPanel{
 				break;
 			}
 		}
+	}
+	
+	public void changerCouleur(int x2, int y2) {
+		for(int i=0; i<list.size();i++){
+			if(list.get(i).contains(x2, y2)){
+				listeCouleur.set(i,new Color(0,0,0));
+				c.changerCouleur(listeCouleur.get(i),i );
+			}	
+		}
+		repaint();
+		
 	}
 	
 }

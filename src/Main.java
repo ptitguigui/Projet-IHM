@@ -15,7 +15,7 @@ public class Main {
 		JPanel p1 = new JPanel();	
 		JPanel l1 = new JPanel();
 		Souris s1 = new Souris();
-		CanvasRect cr1 = new CanvasRect();
+		CanvasRect cr1 = new CanvasRect(c1);
 		JOptionPane d = new JOptionPane();
 		
 		
@@ -54,7 +54,7 @@ public class Main {
 		/**
 		 * Met les carrés de couleur au milieu
 		 */
-		cr1.mettreCouleur(c1);
+		cr1.mettreCouleur();
 		cr1.setH(45);
 		cr1.setW(45);
 		
@@ -70,8 +70,12 @@ public class Main {
 		cr1.setPosition(120,520);
 		cr1.setPosition(280,520);
 		
+		c1.addCanvasRectToCanvas(cr1);
 		c1.addMouseListener(s1);
 		s1.addCanva(c1);
+		cr1.addMouseListener(s1);
+		s1.addCanvasRect(cr1);
+	
 		
 		
 

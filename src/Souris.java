@@ -5,8 +5,9 @@ public class Souris implements MouseListener{
 	Canvas c;
 	CanvasRect cr;
 	
-	public void mouseClicked(MouseEvent e) {
-		c.changerCouleur(e.getX(),e.getY());
+	public void mouseClicked(MouseEvent e) {	
+		cr.changerCouleur(e.getX(),e.getY());
+		
 
 		
 	}
@@ -14,6 +15,11 @@ public class Souris implements MouseListener{
 	public void addCanva(Canvas c){
 		this.c = c;
 	}
+	
+	public void addCanvasRect(CanvasRect cr){
+		this.cr = cr;
+	}
+	
 	
 	@Override
 	public void mouseEntered(MouseEvent arg0) {

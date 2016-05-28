@@ -16,6 +16,7 @@ public class Canvas extends JPanel{
 	private int x=15,y,w,h;
 	private static int largeurFenetre,nombreRectangle;
 	private String name;
+	private CanvasRect cr1;
 	
 	Canvas(String name){
 		this.name = name;
@@ -52,8 +53,6 @@ public class Canvas extends JPanel{
 
 	
 	
-	
-	
 	public void creerNombreRectangle(){
 		for(int i=0; i<nombreRectangle;i++){
 			setH();
@@ -74,14 +73,23 @@ public class Canvas extends JPanel{
 		this.h = r.nextInt(180)+150;
 	}
 	
-	public void largeurRectangle(int n, double largeur){
+
+	public void largeurRectangle(int n, double largeur){ 
+		
+		/**
+		 * détermine la largeur des rectangles
+		 * permet de calculer pour mettre un espace entre les rectangles
+		 */
+		
+		
 		nombreRectangle =n ;
 		this.w =(int) (((largeur-100)/3.0)-(3*n)-1) / n;
 
 	}
 	
+	
 	public static void setLargeurFenetre(int n){
-		largeurFenetre = n;
+		largeurFenetre = n;// détermine la largeur du panel
 	}
 	
 
@@ -89,22 +97,21 @@ public class Canvas extends JPanel{
 		return h;
 	}
 	
+	
 	public int getW(){
 		return w;
 	}
 
-	public int getLargeurFenetre(){
-		return largeurFenetre;
-	}
-
+	
 	public void remplirListeCouleur(){
 		
-		for(int i=0 ; i<nombreRectangle ; i++){
+		for(int i=0 ; i<nombreRectangle ; i++){ // met des couleurs aléatoire dans les rectangles du début
 			listeCouleur.add(new Color(r.nextInt(256),r.nextInt(256),r.nextInt(256)));
 		}				
 	}
 
-	public void changerCouleur(int x2, int y2) {
+	
+	public void changerCouleur(int x2, int y2) { // lorsque l'on clique sur le rectangle, il se met en noir
 		for(int i=0; i<list.size();i++){
 			if(list.get(i).contains(x2, y2))
 				listeCouleur.set(i,new Color(0,0,0));			
@@ -114,4 +121,14 @@ public class Canvas extends JPanel{
 		
 	}
 
+	
+	public void changerCouleur(Color c, int i){
+		listeCouleur.set(i, c);
+		repaint();
+	}
+	
+
+	public void addCanvasRectToCanvas(CanvasRect cr1){
+		this.cr1 = cr1;
+	}
 }
