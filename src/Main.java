@@ -1,31 +1,45 @@
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
+import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.colorchooser.ColorSelectionModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 public class Main {
-
+	
+	JFrame f1 = new JFrame("projet");
+	Canvas c1 = new Canvas("c1");
+	Canvas c2 = new Canvas("c2");
+	JPanel p2 = new JPanel();
+	JPanel p1 = new JPanel();	
+	JPanel p3 = new JPanel();
+	Souris s1 = new Souris();
+	CanvasRect cr1 = new CanvasRect(c1,c2);
+	JColorChooser chooser = new JColorChooser();
+	ColorSelectionModel model = chooser.getSelectionModel();
+	
+	
 	Main(){
-		
-		JFrame f1 = new JFrame("projet");		
-		Canvas c1 = new Canvas("c1");
-		Canvas c2 = new Canvas("c2");	
-		JPanel p2 = new JPanel();
-		JPanel p1 = new JPanel();	
-		JPanel l1 = new JPanel();
-		Souris s1 = new Souris();
-		CanvasRect cr1 = new CanvasRect(c1);
+	
 		JOptionPane d = new JOptionPane();
-		
+	
 		
 		/**
 		 * choisir le nombre de couleur que l'on veut
 		 */
+		int choix=0;
+		try{
+			String [] possibilites = new String[]{"2","3","4","5","6","7","8","9","10"};
+			String s =(String)d.showInputDialog(d, " Choisissez le nombre nombre de couleurs :","Couleur",JOptionPane.QUESTION_MESSAGE,null,possibilites,possibilites[0]);
+			choix = Integer.parseInt(s);
+		}catch(Exception e){
+			
+		}
 		
-		String [] possibilites = new String[]{"2","3","4","5","6","7","8","9","10"};
-		String s =(String)d.showInputDialog(d, " Choisissez le nombre nombre de couleurs :","Couleur",JOptionPane.QUESTION_MESSAGE,null,possibilites,possibilites[0]);
-		int choix = Integer.parseInt(s);
 		
 		f1.getContentPane().setLayout(new GridLayout(1,3));			
 		Canvas.setLargeurFenetre(600);	// positionne les diagrammes	
@@ -36,7 +50,8 @@ public class Main {
 		 * indispensable pour mettre dans le panel
 		 */
 		
-		c1.setPreferredSize(new Dimension(430,1000));		
+		
+		c1.setPreferredSize(new Dimension(430,800));		
 		c2.setPreferredSize(new Dimension(430,1000));
 
 									
@@ -72,19 +87,31 @@ public class Main {
 		
 		c1.addCanvasRectToCanvas(cr1);
 		c1.addMouseListener(s1);
-		s1.addCanva(c1);
 		cr1.addMouseListener(s1);
 		s1.addCanvasRect(cr1);
-	
+		
+				
+		p3.add(chooser);			
+		
+		
+		model.addChangeListener(new ChangeListener(){
+			public void stateChanged(ChangeEvent e){
+				c1.changerCouleur2(chooser.getColor(),cr1.i);
+				c2.changerCouleur2(chooser.getColor(), cr1.i);
+				cr1.mettreAJourCouleur(chooser.getColor(), cr1.i);
+			}
+		}) ;
+		
 		
 		
 
 		cr1.setPreferredSize(new Dimension(430,1000));
-		l1.add(cr1);
+		p3.add(cr1, BorderLayout.CENTER);
+		
 		
 		
 		f1.getContentPane().add(p1);
-		f1.getContentPane().add(l1);
+		f1.getContentPane().add(p3);
 		f1.getContentPane().add(p2);
 
 		f1.setDefaultCloseOperation(f1.EXIT_ON_CLOSE);		
@@ -94,11 +121,15 @@ public class Main {
 		f1.setVisible(true);
 	}
 		
-		public static void main(String args[]){
+		/*public static void main(String args[]){
 			javax.swing.SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
 					new Main();
 				}
 			});
-		}
+		}*/
+	public static void main(String args[]){
+		Main m = new Main();
+		m.chooser.setPreviewPanel(new JPanel());
+	}
 	}

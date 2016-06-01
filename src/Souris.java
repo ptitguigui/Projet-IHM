@@ -2,23 +2,22 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 public class Souris implements MouseListener{
 
-	Canvas c;
+	Canvas c1 = new Canvas ("c1");
+	Canvas c2 = new Canvas ("c2");
 	CanvasRect cr;
 	
-	public void mouseClicked(MouseEvent e) {	
-		cr.changerCouleur(e.getX(),e.getY());
-		
-
-		
-	}
-
-	public void addCanva(Canvas c){
-		this.c = c;
-	}
 	
+	public void mouseClicked(MouseEvent e) {	
+		cr.changerCouleur1(e.getX(),e.getY());		
+		
+	}
+
+
 	public void addCanvasRect(CanvasRect cr){
 		this.cr = cr;
 	}
+	
+	
 	
 	
 	@Override
