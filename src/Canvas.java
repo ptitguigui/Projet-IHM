@@ -56,7 +56,7 @@ public class Canvas extends JPanel{
 	public void creerNombreRectangle(){
 		for(int i=0; i<nombreRectangle;i++){
 			setH();
-			list.add(new Rectangle(x,largeurFenetre-h,w,h)); // changer y en variable par la suite salut
+			list.add(new Rectangle(x,largeurFenetre-h,w,h)); // changer y en variable par la suite
 			x += w+3;			
 		}
 		//repaint();
@@ -104,27 +104,18 @@ public class Canvas extends JPanel{
 
 	
 	public void remplirListeCouleur(){
-		
-		for(int i=0 ; i<nombreRectangle ; i++){ // met des couleurs aléatoire dans les rectangles du début
-			listeCouleur.add(new Color(r.nextInt(256),r.nextInt(256),r.nextInt(256)));
-		}				
-	}
-
-	
-	public void changerCouleur(int x2, int y2) { // lorsque l'on clique sur le rectangle, il se met en noir
-		for(int i=0; i<list.size();i++){
-			if(list.get(i).contains(x2, y2))
-				listeCouleur.set(i,new Color(0,0,0));			
-			
+		for(int i=0 ; i<nombreRectangle; i++){
+			listeCouleur.add(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
 		}
-		repaint();
-		
 	}
 
+
 	
-	public void changerCouleur(Color c, int i){
+	public void changerCouleur2(Color c, int i){
 		listeCouleur.set(i, c);
 		repaint();
+		
+		
 	}
 	
 
