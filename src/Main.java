@@ -4,11 +4,12 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JOptionPane;
-import java.awt.GridLayout;
-import javax.swing.BoxLayout;
 import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.colorchooser.ColorSelectionModel;
 import javax.swing.event.ChangeEvent;
@@ -23,6 +24,10 @@ public class Main {
 	JPanel p3 = new JPanel();
 	JPanel p4 = new JPanel();
 	Souris s1 = new Souris();
+	JMenuBar menuBar = new JMenuBar();
+	JMenu j1 = new JMenu("fichier");
+	JMenuItem i1= new JMenuItem("Nouveau");
+	JMenuItem i2= new JMenuItem("Quitter");
 
 	JLabel l1 = new JLabel("yo");
 	CanvasRect cr1 = new CanvasRect(c1,c2);
@@ -126,7 +131,6 @@ public class Main {
 		p3.add(cr1, BorderLayout.CENTER);
 		
 		
-		
 		f1.getContentPane().add(p1, BorderLayout.WEST);
 		f1.getContentPane().add(p3,BorderLayout.CENTER);
 		f1.getContentPane().add(p2,BorderLayout.EAST);
@@ -137,6 +141,12 @@ public class Main {
 		f1.setLocation(150,100);
 		f1.pack();
 		f1.setVisible(true);
+		menuBar.add(j1);
+		j1.add(i1);
+		j1.add(i2);
+		j1.add(i1);
+		j1.add(i2);
+		f1.setJMenuBar(menuBar);
 	}
 		
 		
