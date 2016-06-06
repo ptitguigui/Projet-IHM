@@ -1,10 +1,14 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+
 import javax.swing.JOptionPane;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JColorChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.colorchooser.ColorSelectionModel;
 import javax.swing.event.ChangeEvent;
@@ -17,8 +21,11 @@ public class Main {
 	JPanel p2 = new JPanel();
 	JPanel p1 = new JPanel();	
 	JPanel p3 = new JPanel();
+	JPanel p4 = new JPanel();
 	Souris s1 = new Souris();
-	CanvasRect cr1 = new CanvasRect(c1);
+
+	JLabel l1 = new JLabel("yo");
+	CanvasRect cr1 = new CanvasRect(c1,c2);
 	JColorChooser chooser = new JColorChooser();
 	ColorSelectionModel model = chooser.getSelectionModel();
 	
@@ -41,8 +48,8 @@ public class Main {
 		}
 		
 		
-		f1.getContentPane().setLayout(new GridLayout(1,3));			
-		Canvas.setLargeurFenetre(600);	// positionne les diagrammes	
+		//f1.getContentPane().setLayout(new GridLayout(1,3));			
+		Canvas.setLargeurFenetre(400);	// positionne les diagrammes	
 						
 		
 		/**
@@ -52,7 +59,8 @@ public class Main {
 		
 		
 		c1.setPreferredSize(new Dimension(430,800));		
-		c2.setPreferredSize(new Dimension(430,1000));
+		c2.setPreferredSize(new Dimension(430,800));
+		
 
 									
 		c1.largeurRectangle(choix,1310);
@@ -60,7 +68,10 @@ public class Main {
 		c1.creerNombreRectangle();	
 		c1.repainte();
 		p1.add(c1);	
-		
+		l1.setLocation(200,250);
+		l1.setBackground(Color.WHITE);
+		p1.add(l1);
+
 		c2.largeurRectangle(choix,1310);			
 		c2.repainte();
 		p2.add(c2);
@@ -72,18 +83,21 @@ public class Main {
 		cr1.mettreCouleur();
 		cr1.setH(45);
 		cr1.setW(45);
+	
 		
 		
-		cr1.setPosition(120,200);
-		cr1.setPosition(280,200);
-		cr1.setPosition(120,280);
-		cr1.setPosition(280,280);
-		cr1.setPosition(120,360);
-		cr1.setPosition(280,360);
-		cr1.setPosition(120,440);
-		cr1.setPosition(280,440);
-		cr1.setPosition(120,520);
-		cr1.setPosition(280,520);
+		cr1.setPosition(120,70);
+		cr1.setPosition(280,70);
+		cr1.setPosition(120,150);
+		cr1.setPosition(280,150);
+		cr1.setPosition(120,230);
+		cr1.setPosition(280,230);
+		cr1.setPosition(120,310);
+		cr1.setPosition(280,310);
+		cr1.setPosition(120,390);
+		cr1.setPosition(280,390);
+		
+	
 		
 		c1.addCanvasRectToCanvas(cr1);
 		c1.addMouseListener(s1);
@@ -91,7 +105,9 @@ public class Main {
 		s1.addCanvasRect(cr1);
 		
 				
-		p3.add(chooser);			
+
+		p4.add(chooser);
+		p4.setBackground(Color.WHITE);
 		
 		
 		model.addChangeListener(new ChangeListener(){
@@ -110,9 +126,10 @@ public class Main {
 		
 		
 		
-		f1.getContentPane().add(p1);
-		f1.getContentPane().add(p3);
-		f1.getContentPane().add(p2);
+		f1.getContentPane().add(p1, BorderLayout.WEST);
+		f1.getContentPane().add(p3,BorderLayout.CENTER);
+		f1.getContentPane().add(p2,BorderLayout.EAST);
+		f1.getContentPane().add(p4,BorderLayout.NORTH);
 
 		f1.setDefaultCloseOperation(f1.EXIT_ON_CLOSE);		
 		f1.setPreferredSize(new Dimension(1310,780));
@@ -121,13 +138,7 @@ public class Main {
 		f1.setVisible(true);
 	}
 		
-		/*public static void main(String args[]){
-			javax.swing.SwingUtilities.invokeLater(new Runnable() {
-				public void run() {
-					new Main();
-				}
-			});
-		}*/
+		
 	public static void main(String args[]){
 		Main m = new Main();
 		m.chooser.setPreviewPanel(new JPanel());
