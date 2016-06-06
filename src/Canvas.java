@@ -102,13 +102,48 @@ public class Canvas extends JPanel{
 		return w;
 	}
 
-	
+	/*
 	public void remplirListeCouleur(){
 		for(int i=0 ; i<nombreRectangle; i++){
 			listeCouleur.add(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
 		}
-	}
+	}*/
 
+	public void remplirListeCouleur(){
+		int rouge = 0;
+		int vert = 0;
+		int bleu = 0;
+		int gris = 0;
+		int cpt = 0;
+		ArrayList<Integer> nuanceGris = new ArrayList<>();
+		boolean trouve = false;
+		
+		nuanceGris.add(0);
+		nuanceGris.add(255);
+		for(int i=0 ; i<nombreRectangle; i++){
+			while(!trouve){
+				rouge = r.nextInt(256);
+				vert = r.nextInt(256);
+				bleu = r.nextInt(256);
+				gris =  (int) (0.3*rouge + 0.59*vert + 0.11*bleu);
+				
+				for(int j = 0; j<nuanceGris.size(); j++){
+					if((gris-nuanceGris.get(j) < -15 && nuanceGris.get(j)-gris >15) || (gris - nuanceGris.get(j)>15 && nuanceGris.get(j) - gris <-15)){
+						cpt++;
+					}
+				}
+				if(cpt==nuanceGris.size())
+					trouve = true;	
+				else
+					cpt = 0;
+			}
+			nuanceGris.add(gris);
+			trouve = false;
+			cpt =0;
+			listeCouleur.add(new Color(rouge,vert,bleu));
+		}
+	}
+	
 
 	
 	public void changerCouleur2(Color c, int i){
