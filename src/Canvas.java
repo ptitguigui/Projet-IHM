@@ -56,7 +56,7 @@ public class Canvas extends JPanel{
 	public void creerNombreRectangle(){
 		for(int i=0; i<nombreRectangle;i++){
 			setH();
-			list.add(new Rectangle(x,largeurFenetre-h,w,h)); // changer y en variable par la suite salut
+			list.add(new Rectangle(x,largeurFenetre-h,w,h)); // changer y en variable par la suite
 			x += w+3;			
 		}
 		//repaint();

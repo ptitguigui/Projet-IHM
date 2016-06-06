@@ -18,7 +18,7 @@ public class Main {
 	JPanel p1 = new JPanel();	
 	JPanel p3 = new JPanel();
 	Souris s1 = new Souris();
-	CanvasRect cr1 = new CanvasRect(c1,c2);
+	CanvasRect cr1 = new CanvasRect(c1);
 	JColorChooser chooser = new JColorChooser();
 	ColorSelectionModel model = chooser.getSelectionModel();
 	
