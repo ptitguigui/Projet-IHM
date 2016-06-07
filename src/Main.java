@@ -2,6 +2,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -24,14 +28,16 @@ public class Main {
 	JPanel p1 = new JPanel();	
 	JPanel p3 = new JPanel();
 	JPanel p4 = new JPanel();
+	JPanel p5 = new JPanel();
 	Souris s1 = new Souris();
-	JButton button = new JButton("Terminer");
+	JLabel l1 = new JLabel("code rgb");
+	JLabel l2 = new JLabel("(0,0,0)");
+	JLabel l3 = new JLabel("code hexa");
+	JLabel l4 = new JLabel("(0x0)");
 	JMenuBar menuBar = new JMenuBar();
 	JMenu j1 = new JMenu("fichier");
-	JMenuItem i1= new JMenuItem("Nouveau");
 	JMenuItem i2= new JMenuItem("Quitter");
 
-	JLabel l1 = new JLabel("yo");
 	CanvasRect cr1 = new CanvasRect(c1,c2);
 	JColorChooser chooser = new JColorChooser();
 	ColorSelectionModel model = chooser.getSelectionModel();
@@ -50,7 +56,6 @@ public class Main {
 			String [] possibilites = new String[]{"2","3","4","5","6","7","8","9","10"};
 			String s =(String)d.showInputDialog(d, " Choisissez le nombre nombre de couleurs :","Couleur",JOptionPane.QUESTION_MESSAGE,null,possibilites,possibilites[0]);
 			choix = Integer.parseInt(s);
-			d.showMessageDialog(null, "Voici vos "+choix+" couleurs avec des nuances de gris distinctes");
 		}catch(Exception e){
 			
 		}
@@ -83,9 +88,15 @@ public class Main {
 		c2.repainte();
 		p2.add(c2);
 		
-		p3.add(button,BorderLayout.SOUTH);
-		button.setLocation(200,250);
-		button.setBackground(Color.WHITE);
+		p5.add(l1);
+		p5.add(l2);
+		p5.add(l3);
+		p5.add(l4);
+		p3.setLayout(null);
+		p5.setBackground(Color.WHITE);
+		p5.setBounds(0,500, 450 ,100);
+		p5.setLayout(new GridLayout(1,1));
+		p3.add(p5);
 		
 		/**
 		 * Mets les carrés de couleur au milieu
@@ -125,14 +136,17 @@ public class Main {
 				c1.changerCouleur2(chooser.getColor(),cr1.i);
 				c2.changerCouleur2(chooser.getColor(), cr1.i);
 				cr1.mettreAJourCouleur(chooser.getColor(), cr1.i);
+				l2.setText("("+chooser.getColor().getRed()+","+chooser.getColor().getGreen()+","+chooser.getColor().getBlue()+")");
+				l4.setText("Ox"+Integer.toHexString(chooser.getColor().getRGB()));
 			}
 		}) ;
 		
 		
 		
 
-		cr1.setPreferredSize(new Dimension(430,1000));
-		p3.add(cr1, BorderLayout.CENTER);
+		cr1.setPreferredSize(new Dimension(430,500));
+		cr1.setBounds(0, 0, 430, 500);
+		p3.add(cr1);
 		
 
 		
@@ -142,11 +156,21 @@ public class Main {
 		f1.getContentPane().add(p4,BorderLayout.NORTH);
 
 		f1.setDefaultCloseOperation(f1.EXIT_ON_CLOSE);		
-		f1.setPreferredSize(new Dimension(1310,780));
+		f1.setPreferredSize(new Dimension(1310,980));
 		f1.setLocation(150,100);
 		menuBar.add(j1);
-		j1.add(i1);
 		j1.add(i2);
+	
+		i2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				f1.dispose();
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		f1.setJMenuBar(menuBar);
 		f1.pack();
 		f1.setVisible(true);

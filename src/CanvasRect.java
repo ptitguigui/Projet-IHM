@@ -47,6 +47,8 @@ public class CanvasRect extends JPanel{
 				g2.setStroke(new BasicStroke(6));
 				g2.drawRect(list.get(i).x, list.get(i).y, list.get(i).width, list.get(i).height);
 				g2.setStroke(s);
+				
+				
 			}
 			else
 				g.drawRect(list.get(i).x, list.get(i).y, list.get(i).width, list.get(i).height);		
@@ -110,4 +112,6 @@ public class CanvasRect extends JPanel{
 		listeCouleur.set(i,c);	
 		repaint();
 	}
+	
+	
 }
