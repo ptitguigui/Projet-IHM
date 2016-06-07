@@ -49,12 +49,12 @@ public class CanvasRect extends JPanel{
 				g2.setStroke(s);
 				
 				
+				
 			}
 			else
 				g.drawRect(list.get(i).x, list.get(i).y, list.get(i).width, list.get(i).height);		
 		}
 	}
-
 	public void setPosition(int x, int y){
 		this.x=x;
 		this.y=y;
@@ -105,6 +105,9 @@ public class CanvasRect extends JPanel{
 			}	
 		}
 		repaint();		
+	}
+	public Color getCouleur(int i){
+		return listeCouleur.get(i);
 	}
 
 	// change la couleur du petit carré quand une couleur est selectionner sur le ChooserColor

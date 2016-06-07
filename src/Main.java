@@ -142,7 +142,6 @@ public class Main {
 		}) ;
 		
 		
-		
 
 		cr1.setPreferredSize(new Dimension(430,500));
 		cr1.setBounds(0, 0, 430, 500);

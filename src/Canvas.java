@@ -74,14 +74,12 @@ public class Canvas extends JPanel{
 	}
 	
 
+	/**
+	 * détermine la largeur des rectangles
+	 * permet de calculer pour mettre un espace entre les rectangles
+	 */
 	public void largeurRectangle(int n, double largeur){ 
-		
-		/**
-		 * détermine la largeur des rectangles
-		 * permet de calculer pour mettre un espace entre les rectangles
-		 */
-		
-		
+				
 		nombreRectangle =n ;
 		this.w =(int) (((largeur-100)/3.0)-(3*n)-1) / n;
 
@@ -102,13 +100,7 @@ public class Canvas extends JPanel{
 		return w;
 	}
 
-	/*
-	public void remplirListeCouleur(){
-		for(int i=0 ; i<nombreRectangle; i++){
-			listeCouleur.add(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
-		}
-	}*/
-
+	
 	public void remplirListeCouleur(){
 		int rouge = 0;
 		int vert = 0;
