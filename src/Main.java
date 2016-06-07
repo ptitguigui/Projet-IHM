@@ -25,6 +25,7 @@ public class Main {
 	JPanel p3 = new JPanel();
 	JPanel p4 = new JPanel();
 	Souris s1 = new Souris();
+	JButton button = new JButton("Terminer");
 	JMenuBar menuBar = new JMenuBar();
 	JMenu j1 = new JMenu("fichier");
 	JMenuItem i1= new JMenuItem("Nouveau");
@@ -82,9 +83,9 @@ public class Main {
 		c2.repainte();
 		p2.add(c2);
 		
-		p3.add(new JButton("Terminer"),BorderLayout.SOUTH);
-		l1.setLocation(200,250);
-		l1.setBackground(Color.WHITE);
+		p3.add(button,BorderLayout.SOUTH);
+		button.setLocation(200,250);
+		button.setBackground(Color.WHITE);
 		
 		/**
 		 * Mets les carrés de couleur au milieu
