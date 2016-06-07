@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,6 +49,7 @@ public class Main {
 			String [] possibilites = new String[]{"2","3","4","5","6","7","8","9","10"};
 			String s =(String)d.showInputDialog(d, " Choisissez le nombre nombre de couleurs :","Couleur",JOptionPane.QUESTION_MESSAGE,null,possibilites,possibilites[0]);
 			choix = Integer.parseInt(s);
+			d.showMessageDialog(null, "Voici vos "+choix+" couleurs avec des nuances de gris distinctes");
 		}catch(Exception e){
 			
 		}
@@ -74,17 +76,18 @@ public class Main {
 		c1.creerNombreRectangle();	
 		c1.repainte();
 		p1.add(c1);	
-		l1.setLocation(200,250);
-		l1.setBackground(Color.WHITE);
-		p1.add(l1);
+		
 
 		c2.largeurRectangle(choix,1310);			
 		c2.repainte();
 		p2.add(c2);
 		
+		p3.add(new JButton("Terminer"),BorderLayout.SOUTH);
+		l1.setLocation(200,250);
+		l1.setBackground(Color.WHITE);
 		
 		/**
-		 * Met les carrés de couleur au milieu
+		 * Mets les carrés de couleur au milieu
 		 */
 		cr1.mettreCouleur();
 		cr1.setH(45);
@@ -92,16 +95,16 @@ public class Main {
 	
 		
 		
-		cr1.setPosition(120,70);
-		cr1.setPosition(280,70);
-		cr1.setPosition(120,150);
-		cr1.setPosition(280,150);
-		cr1.setPosition(120,230);
-		cr1.setPosition(280,230);
-		cr1.setPosition(120,310);
-		cr1.setPosition(280,310);
-		cr1.setPosition(120,390);
-		cr1.setPosition(280,390);
+		cr1.setPosition(120,30);
+		cr1.setPosition(280,30);
+		cr1.setPosition(120,110);
+		cr1.setPosition(280,110);
+		cr1.setPosition(120,190);
+		cr1.setPosition(280,190);
+		cr1.setPosition(120,270);
+		cr1.setPosition(280,270);
+		cr1.setPosition(120,350);
+		cr1.setPosition(280,350);
 		
 	
 		
@@ -130,6 +133,7 @@ public class Main {
 		cr1.setPreferredSize(new Dimension(430,1000));
 		p3.add(cr1, BorderLayout.CENTER);
 		
+
 		
 		f1.getContentPane().add(p1, BorderLayout.WEST);
 		f1.getContentPane().add(p3,BorderLayout.CENTER);
@@ -139,19 +143,18 @@ public class Main {
 		f1.setDefaultCloseOperation(f1.EXIT_ON_CLOSE);		
 		f1.setPreferredSize(new Dimension(1310,780));
 		f1.setLocation(150,100);
-		f1.pack();
-		f1.setVisible(true);
 		menuBar.add(j1);
 		j1.add(i1);
 		j1.add(i2);
-		j1.add(i1);
-		j1.add(i2);
 		f1.setJMenuBar(menuBar);
+		f1.pack();
+		f1.setVisible(true);
 	}
 		
 		
 	public static void main(String args[]){
 		Main m = new Main();
+		
 		m.chooser.setPreviewPanel(new JPanel());
 	}
 	}

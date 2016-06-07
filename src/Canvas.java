@@ -128,8 +128,14 @@ public class Canvas extends JPanel{
 				gris =  (int) (0.3*rouge + 0.59*vert + 0.11*bleu);
 				
 				for(int j = 0; j<nuanceGris.size(); j++){
-					if((gris-nuanceGris.get(j) < -15 && nuanceGris.get(j)-gris >15) || (gris - nuanceGris.get(j)>15 && nuanceGris.get(j) - gris <-15)){
-						cpt++;
+					if(nombreRectangle>6){
+						if((gris-nuanceGris.get(j) < -15 && nuanceGris.get(j)-gris >15) || (gris - nuanceGris.get(j)>15 && nuanceGris.get(j) - gris <-15)){
+							cpt++;
+						}
+					}else{
+						if((gris-nuanceGris.get(j) < -25 && nuanceGris.get(j)-gris >25) || (gris - nuanceGris.get(j)>25 && nuanceGris.get(j) - gris <-25)){
+							cpt++;
+						}
 					}
 				}
 				if(cpt==nuanceGris.size())
